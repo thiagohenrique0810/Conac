@@ -1,0 +1,15 @@
+thiagohenrique0810@hotmail.com ------>email
+1234			   ------>senha
+aluno			   ------> tipo de usuario
+thiago henrique pequeno da silva   ------> nome
+08101991 			   ------> data de nascimento
+09191332400 		   ------> CPF
+andreia pequena da silva 	   ------> noma da mae
+rua agripino de freitas 	   ------> endereço
+2013 			   ------> ano de entrada
+2017 			   ------> ano de saida
+bolsa			   ------> tipo de pagamento
+computação		   ------> curso desejado
+cursando			   ------> situação atual
+
+
