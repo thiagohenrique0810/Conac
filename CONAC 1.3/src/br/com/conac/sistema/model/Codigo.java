@@ -1,4 +1,4 @@
-package br.com.conac.sistema.antigos;
+package br.com.conac.sistema.model;
 /**
  * @description gerador de codigos
  * */

@@ -1,6 +1,6 @@
 package br.com.conac.sistema.model;
 
-public class Aluno extends Pessoa	{
+public final class Aluno extends Pessoa	{
 	//atributos
 	private String tipoPagamento;
 	private String cursoDesejado;

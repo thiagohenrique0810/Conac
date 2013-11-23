@@ -4,19 +4,28 @@
  * */
 
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 import br.com.conac.sistema.view.LoginJF;
 
 public class Start {
 	public static void main(String args[])	{
 		/**
 		 * @descrição para verificar se ha algum secretario cadastrado
-		 * @demo
 		 */
 		//codigo aqui!!!
 		
 		/**
 		 * @descrição abre janela de acesso 
 		 */
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException | InstantiationException
+				| IllegalAccessException | UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			//LOG.error(e.getMessage());
+		}
 		LoginJF l = new LoginJF();
 		l.setVisible(true);
 		l.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

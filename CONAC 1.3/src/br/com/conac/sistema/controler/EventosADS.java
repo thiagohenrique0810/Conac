@@ -6,8 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 
-import br.com.conac.sistema.model.NovoCadastro;
-
 
 public class EventosADS implements ActionListener {
 	private JRadioButton rdbtnProfessor;

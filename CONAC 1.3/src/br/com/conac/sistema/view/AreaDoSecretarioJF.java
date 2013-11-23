@@ -24,13 +24,14 @@ import br.com.conac.sistema.controler.EventosADS;
 
 
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 public class AreaDoSecretarioJF extends JFrame	{
 	private JButton btnNewButton;
 	private JLabel lblNewLabel_1;
 	private EventosADS evento01;
 	private JButton btnCadastrese;
-	private JLabel label;
+	private JLabel lblGerenciamento;
 	private ButtonGroup buttonGroup = new ButtonGroup();
 	private JRadioButton rdbtnProfessor;
 	private JRadioButton rdbtnAluno;
@@ -67,17 +68,18 @@ public class AreaDoSecretarioJF extends JFrame	{
 		JLabel lblsistemaDeControle = new JLabel("(SISTEMA DE CONTROLE ACADEMICO)");
 		lblsistemaDeControle.setForeground(SystemColor.inactiveCaptionBorder);
 		lblsistemaDeControle.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		lblsistemaDeControle.setBounds(10, 33, 208, 37);
+		lblsistemaDeControle.setBounds(20, 56, 208, 37);
 
-		JLabel lblConac = new JLabel("CONAC");
+		JLabel lblConac = new JLabel("");
+		lblConac.setIcon(new ImageIcon(AreaDoSecretarioJF.class.getResource("/imgs/logo.fw.png")));
 		lblConac.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 35));
 		lblConac.setForeground(SystemColor.controlHighlight);
-		lblConac.setBounds(33, 0, 195, 53);
+		lblConac.setBounds(10, 0, 254, 89);
 
-		label = new JLabel("Gerenciamento");
-		label.setForeground(Color.WHITE);
-		label.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		label.setBounds(63, 182, 129, 14);
+		lblGerenciamento = new JLabel("Gerenciamento");
+		lblGerenciamento.setForeground(Color.WHITE);
+		lblGerenciamento.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblGerenciamento.setBounds(63, 182, 129, 14);
 
 		lblNewLabel_1 = new JLabel("Novo cadastro");
 		lblNewLabel_1.setForeground(SystemColor.text);
@@ -85,12 +87,14 @@ public class AreaDoSecretarioJF extends JFrame	{
 		lblNewLabel_1.setBounds(383, 182, 129, 14);
 
 		btnNewButton = new JButton("Entrar");
+		btnNewButton.setIcon(new ImageIcon(AreaDoSecretarioJF.class.getResource("/imgs/iconsetup.fw.png")));
 		btnNewButton.setForeground(SystemColor.textHighlight);
 		btnNewButton.setFont(new Font("Tahoma", Font.ITALIC, 14));
 		btnNewButton.setBounds(63, 290, 129, 37);
 		btnNewButton.addActionListener(evento01);
 
 		btnCadastrese = new JButton("Cadastrar");
+		btnCadastrese.setIcon(new ImageIcon(AreaDoSecretarioJF.class.getResource("/imgs/iconadd.fw.png")));
 		btnCadastrese.setForeground(SystemColor.textHighlight);
 		btnCadastrese.setFont(new Font("Tahoma", Font.ITALIC, 14));
 		btnCadastrese.setBounds(383, 290, 129, 37);
@@ -126,7 +130,7 @@ public class AreaDoSecretarioJF extends JFrame	{
 		container.add(lblBemvindoAoConac);
 		container.add(lblsistemaDeControle);
 		container.add(lblConac);
-		container.add(label);
+		container.add(lblGerenciamento);
 		container.add(lblNewLabel_1);
 		container.add(btnNewButton);
 		container.add(btnCadastrese);

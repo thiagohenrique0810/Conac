@@ -1,15 +1,16 @@
 package br.com.conac.sistema.view;
 
 import java.awt.Choice;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.HeadlessException;
+import java.awt.List;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,14 +19,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
+import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
-import br.com.conac.sistema.DAO.LoginDB;
-import br.com.conac.sistema.DAO.SalvarDados;
+import br.com.conac.sistema.dao.LoginDB;
+import br.com.conac.sistema.dao.SalvarDados;
 import br.com.conac.sistema.model.Aluno;
-import java.awt.List;
-import javax.swing.JSeparator;
-import java.awt.TextArea;
 
 
 public class CadastroAlunoJF extends JFrame {
@@ -59,9 +58,12 @@ public class CadastroAlunoJF extends JFrame {
 	private JTextField tfFCpf;
 	private JTextField tfDataNasc;
 	private JPasswordField jpassword;
+	
+	private Container container;
 
 	private Aluno novoAluno;
 	private TratadorEventos evento;
+	private JTextField txtFone;
 
 
 	public CadastroAlunoJF() {
@@ -70,7 +72,7 @@ public class CadastroAlunoJF extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Thiago Henrique\\Documents\\workspace\\CONAC 1.2\\src\\poo\\conac\\sistema\\view\\imgs\\logo.fw.png"));
 		setSize(534,656);
 
-		Container container =  getContentPane();
+		container =  getContentPane();
 
 		setLocation(450, 50);
 
@@ -153,20 +155,20 @@ public class CadastroAlunoJF extends JFrame {
 		tfAnoSaida.addActionListener(evento);
 
 		btnEnviar = new JButton("Enviar");
-		btnEnviar.setIcon(new ImageIcon("C:\\Users\\Thiago Henrique\\Documents\\workspace\\CONAC 1.2\\src\\poo\\conac\\sistema\\view\\imgs\\icon_ok.fw.png")); 
+		btnEnviar.setIcon(new ImageIcon(CadastroAlunoJF.class.getResource("/imgs/iconok.fw.png"))); 
 		btnEnviar.setBounds(65, 576, 106, 34);
 		container.add(btnEnviar);
 		btnEnviar.addActionListener(evento);
 
 		btnLimparCampos = new JButton("Limpar campos");
-		btnLimparCampos.setIcon(new ImageIcon("C:\\Users\\Thiago Henrique\\Documents\\workspace\\CONAC 1.2\\src\\poo\\conac\\sistema\\view\\imgs\\icon_refresh.fw.png"));
+		btnLimparCampos.setIcon(new ImageIcon(CadastroAlunoJF.class.getResource("/imgs/iconrefresh.fw.png")));
 		btnLimparCampos.setBounds(173, 576, 162, 34);
 		container.add(btnLimparCampos);
 		btnLimparCampos.addActionListener(evento);
 
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setIcon(new ImageIcon("C:\\Users\\Thiago Henrique\\Documents\\workspace\\CONAC 1.2\\src\\poo\\conac\\sistema\\view\\imgs\\icon_cancel.fw.png"));
-		btnCancelar.setBounds(337, 576, 117, 34);
+		btnCancelar.setIcon(new ImageIcon(CadastroAlunoJF.class.getResource("/imgs/iconcancel.fw.png")));
+		btnCancelar.setBounds(337, 576, 122, 34);
 		container.add(btnCancelar);
 		btnCancelar.addActionListener(evento);
 
@@ -226,6 +228,15 @@ public class CadastroAlunoJF extends JFrame {
 		separator.setBounds(495, 374, -57, 2);
 		getContentPane().add(separator);
 		
+		JLabel lblF = new JLabel("Fone:");
+		lblF.setBounds(259, 519, 46, 14);
+		getContentPane().add(lblF);
+		
+		txtFone = new JTextField();
+		txtFone.setBounds(362, 516, 117, 20);
+		getContentPane().add(txtFone);
+		txtFone.setColumns(10);
+		
 	}
 	public class TratadorEventos implements ActionListener	{
 		public void actionPerformed(ActionEvent e) {
@@ -250,22 +261,49 @@ public class CadastroAlunoJF extends JFrame {
 			}
 			if(e.getSource() == btnLimparCampos)	{
 				//instruções para limpar os campos de texto
-				tfNome.setText("");
-				jpassword.setText("");
-				tfNomeMae.setText("");
-				tfAnoEntrada.setText("");
-				tfAnoSaida.setText("");
-				tfEndereco.setText("");
-				tfEmail.setText("");
-				tfFCpf.setText("");
-				tfDataNasc.setText("");
+				limparCampos();
 			}
 			if(e.getSource() == btnCancelar)	{
 				//instruções para fechar e cancelar a operação
 			}
 		}
 	}
+	
+	/**
+	 * Limpa os JTextFields da janela.
+	 * 
+	 */
+	public void limparCampos() {
 
+		for (JTextField jtf : getTextFields()) {
+
+			jtf.setText("");
+		}
+	}
+
+	/**
+	 * Pega todos os JTextFields do PAINEL_CENTRO, onde ficam os campos de
+	 * cadastro do usuário.
+	 * 
+	 * @TODO não retorna o valor do combo box,
+	 * 
+	 * @return Array de JTextFields
+	 */
+	public JTextField[] getTextFields() {
+
+		ArrayList<JTextField> fields = new ArrayList<JTextField>();
+
+		for (Component C : container.getComponents()) {
+
+			if (C instanceof JTextField) {
+				fields.add(((JTextField) C));
+			}
+		}
+
+		return fields.toArray(new JTextField[fields.size()]);
+	}
+	
+	//recuperando as informações dos campos
 	public Aluno getInformacoes()	{
 		novoAluno = new Aluno(tfNome.getText(),tfFCpf.getText());
 
@@ -279,6 +317,7 @@ public class CadastroAlunoJF extends JFrame {
 		novoAluno.setTipoPagamento(choice.getSelectedItem());
 		novoAluno.setCursoDesejado(choice_1.getSelectedItem());
 		novoAluno.setSituacaoAtual(choice_2.getSelectedItem());
+		novoAluno.setTelefone(txtFone.getText());
 		return novoAluno;
 	}
 

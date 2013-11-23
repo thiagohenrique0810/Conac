@@ -13,8 +13,17 @@ public abstract class Pessoa {
 	private String cpf;
 	private String dataDeNascimento;
 	private String endereco;
+	private String telefone;
 	private String email;
 	private String senha;
+	
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 	
 	public String getSenha() {
 		return senha;

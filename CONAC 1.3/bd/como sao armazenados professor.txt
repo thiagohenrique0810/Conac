@@ -3,16 +3,17 @@ thiagohenrique0810@hotmail.com 	------>email
 Professor			   	------> tipo de usuario
 thiago henrique pequeno da silva   	------> nome
 08101991 			   	------> data de nascimento
-09191332400 		   	------> CPF
+09191332411 		   	------> CPF
 rua agripino de freitas 	   	------> endereço
+33793383				------> telefone
 2013 			   	------> ano de entrada
+computação		   	------> curso a ministrar
 ciencias da computação	   	------> titulo de graduação
 2000			   	------> ano de conclusao
 ciencias da computação	   	------> titulo de mestrado
 2004			   	------> ano de conclusao
 ciencias da computação	   	------> titulo de doutorado
-2010			   	------> ano de conclusao
-ciências da computação	   	------> curso a ministrar	
+2010			   	------> ano de conclusao	
 introdução a computação	   	------> diciplina a ministrar
 programação imperativa	   	------> diciplina a ministrar
 programação orientada a objetos  	------> diciplina a ministrar

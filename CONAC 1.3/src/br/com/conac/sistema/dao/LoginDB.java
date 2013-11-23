@@ -1,10 +1,13 @@
-package br.com.conac.sistema.DAO;
+package br.com.conac.sistema.dao;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+
 import javax.swing.JOptionPane;
+
+import br.com.conac.sistema.view.AreaDoAlunoJF;
 import br.com.conac.sistema.view.AreaDoSecretarioJF;
 
 
@@ -104,6 +107,8 @@ public class LoginDB {
 			}
 			else if(tipoUsuario.equals("Aluno"))	{
 				//codigo para abrir a janela do usuario Aluno
+				AreaDoAlunoJF aluno = new AreaDoAlunoJF();
+				aluno.setVisible(true);
 			}
 		} catch (FileNotFoundException e) {
 			JOptionPane.showMessageDialog(null, "Problema ao indentificar usuario");

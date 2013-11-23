@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import br.com.conac.sistema.DAO.LoginDB;
+import br.com.conac.sistema.dao.LoginDB;
 
 public class EventoLogin implements ActionListener	{
 	//atributos
