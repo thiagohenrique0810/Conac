@@ -16,6 +16,7 @@ public class DemoDiciplina {
 			a.notas.setNota01(10);
 			a.notas.setNota02(10);
 			
+			
 			//instruções para gerar codigo pra diciplina
 			String codigoGerado = "0";
 			boolean valid = true;
