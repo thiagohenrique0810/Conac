@@ -6,14 +6,20 @@ public class Diciplina {
 	private String codigo;
 	private String nomeDiciplina;
 	private String cargaHoraria;
-	private String descriçãoDaEmenta;
+	private String descricaoDaEmenta;
+	private String curso;
+
 	public DiciplinaNota notas = new DiciplinaNota(this.getCodigo());	
 
 	/**
 	 * @description descrições da classe
 	 * */
-	public String getDescricaoDaEmenta() {
-		return this.descriçãoDaEmenta;
+	public String getCurso() {
+		return curso;
+	}
+
+	public void setCurso(String curso) {
+		this.curso = curso;
 	}
 
 	public String getNomeDiciplina() {
@@ -41,6 +47,10 @@ public class Diciplina {
 	}
 	
 	public void setDescricaoDaEmenta(String descricaoDaEmenta) {
-		this.descriçãoDaEmenta = descricaoDaEmenta;
+		this.descricaoDaEmenta = descricaoDaEmenta;
+	}
+	
+	public String getDescricaoDaEmenta() {
+		return this.descricaoDaEmenta;
 	}
 }

@@ -1,4 +1,5 @@
-000001
+00001
+computação
 programação orientada a objetos
 36
 paradigma de programação visando abstrair coisas do mundo abstrato das ideias e transformalas em programas, para que se tenha um melhor gerenciamento e desenvolvimento do mesmo 
