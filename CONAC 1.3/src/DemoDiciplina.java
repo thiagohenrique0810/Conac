@@ -17,7 +17,7 @@ public class DemoDiciplina {
 			a.notas.setNota02(10);
 			
 			//instruções para gerar codigo pra diciplina
-			String codigoGerado = "000000";
+			String codigoGerado = "0";
 			boolean valid = true;
 
 			while(valid)	{
@@ -31,7 +31,6 @@ public class DemoDiciplina {
 						valid = false;
 					}
 				} catch (IOException e) {
-					//e.printStackTrace();
 					a.setCodigo(codigoGerado);
 				}
 				
