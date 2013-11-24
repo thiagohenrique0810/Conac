@@ -25,6 +25,7 @@ import javax.swing.JTextField;
 import br.com.conac.sistema.dao.LoginDB;
 import br.com.conac.sistema.dao.SalvarDados;
 import br.com.conac.sistema.model.Aluno;
+import java.awt.SystemColor;
 
 
 public class CadastroAlunoJF extends JFrame {
@@ -64,6 +65,7 @@ public class CadastroAlunoJF extends JFrame {
 	private Aluno novoAluno;
 	private TratadorEventos evento;
 	private JTextField txtFone;
+	private JLabel label;
 
 
 	public CadastroAlunoJF() {
@@ -156,19 +158,19 @@ public class CadastroAlunoJF extends JFrame {
 
 		btnEnviar = new JButton("Enviar");
 		btnEnviar.setIcon(new ImageIcon(CadastroAlunoJF.class.getResource("/imgs/iconok.fw.png"))); 
-		btnEnviar.setBounds(65, 576, 106, 34);
+		btnEnviar.setBounds(55, 572, 106, 34);
 		container.add(btnEnviar);
 		btnEnviar.addActionListener(evento);
 
 		btnLimparCampos = new JButton("Limpar campos");
 		btnLimparCampos.setIcon(new ImageIcon(CadastroAlunoJF.class.getResource("/imgs/iconrefresh.fw.png")));
-		btnLimparCampos.setBounds(173, 576, 162, 34);
+		btnLimparCampos.setBounds(163, 572, 162, 34);
 		container.add(btnLimparCampos);
 		btnLimparCampos.addActionListener(evento);
 
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setIcon(new ImageIcon(CadastroAlunoJF.class.getResource("/imgs/iconcancel.fw.png")));
-		btnCancelar.setBounds(337, 576, 122, 34);
+		btnCancelar.setBounds(327, 572, 122, 34);
 		container.add(btnCancelar);
 		btnCancelar.addActionListener(evento);
 
@@ -236,6 +238,12 @@ public class CadastroAlunoJF extends JFrame {
 		txtFone.setBounds(362, 516, 117, 20);
 		getContentPane().add(txtFone);
 		txtFone.setColumns(10);
+		
+		label = new JLabel("CONAC\r\n");
+		label.setForeground(SystemColor.textHighlight);
+		label.setFont(new Font("Apple Butter", Font.BOLD | Font.ITALIC, 15));
+		label.setBounds(455, 594, 63, 23);
+		getContentPane().add(label);
 		
 	}
 	public class TratadorEventos implements ActionListener	{

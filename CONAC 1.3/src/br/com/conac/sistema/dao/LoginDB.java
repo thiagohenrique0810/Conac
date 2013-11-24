@@ -98,16 +98,17 @@ public class LoginDB {
 			arq.close();
 			//verificando o tipo de usuario
 			if(tipoUsuario.equals("Secretario"))	{
-				//codigo para abrir a janela do usuario secretario
+				//instruções para abrir a janela do usuario secretario
 				AreaDoSecretarioJF secretario = new AreaDoSecretarioJF();
 				secretario.setVisible(true);
 			}
 			else if(tipoUsuario.equals("Professor"))	{
-				//codigo para abrir a janela do usuario Professor
+				//instruções para abrir a janela do usuario Professor
 			}
 			else if(tipoUsuario.equals("Aluno"))	{
-				//codigo para abrir a janela do usuario Aluno
+				//instruções para abrir a janela do usuario Aluno
 				AreaDoAlunoJF aluno = new AreaDoAlunoJF();
+				aluno.setEmail(email);
 				aluno.setVisible(true);
 			}
 		} catch (FileNotFoundException e) {

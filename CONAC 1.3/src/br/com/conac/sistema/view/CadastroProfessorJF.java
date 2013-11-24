@@ -27,6 +27,7 @@ import javax.swing.JTextField;
 import br.com.conac.sistema.dao.LoginDB;
 import br.com.conac.sistema.dao.SalvarDados;
 import br.com.conac.sistema.model.Professor;
+import java.awt.SystemColor;
 
 public class CadastroProfessorJF extends JFrame	{
 	//componentes
@@ -63,6 +64,7 @@ public class CadastroProfessorJF extends JFrame	{
 	private Checkbox checkbox_2;
 	private JLabel lblFone;
 	private JTextField txtTel;
+	private JLabel label;
 
 	public CadastroProfessorJF() {
 
@@ -238,6 +240,12 @@ public class CadastroProfessorJF extends JFrame	{
 		txtTel.setBounds(423, 320, 116, 20);
 		getContentPane().add(txtTel);
 		txtTel.setColumns(10);
+		
+		label = new JLabel("CONAC\r\n");
+		label.setForeground(SystemColor.textHighlight);
+		label.setFont(new Font("Apple Butter", Font.BOLD | Font.ITALIC, 15));
+		label.setBounds(506, 535, 63, 23);
+		getContentPane().add(label);
 
 	}
 

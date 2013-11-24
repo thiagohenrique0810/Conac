@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.ImageIcon;
 
 public class AreaDoAlunoJF extends JFrame {
 	
@@ -21,6 +22,7 @@ public class AreaDoAlunoJF extends JFrame {
 	private JButton btnEntrar;
 	private Container container;
 	private TratadorEventos evento;
+	private String email;
 	
 	public AreaDoAlunoJF()	{
 		
@@ -38,13 +40,14 @@ public class AreaDoAlunoJF extends JFrame {
 		JLabel label = new JLabel("(SISTEMA DE CONTROLE ACADEMICO)");
 		label.setForeground(Color.WHITE);
 		label.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		label.setBounds(10, 33, 208, 37);
+		label.setBounds(10, 36, 208, 37);
 		container.add(label);
 		
-		JLabel label_1 = new JLabel("CONAC");
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(AreaDoAlunoJF.class.getResource("/imgs/logo.fw.png")));
 		label_1.setForeground(Color.WHITE);
 		label_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 35));
-		label_1.setBounds(33, 0, 195, 53);
+		label_1.setBounds(10, 0, 195, 53);
 		container.add(label_1);
 		
 		JLabel label_2 = new JLabel("CONAC\r\n");
@@ -72,6 +75,7 @@ public class AreaDoAlunoJF extends JFrame {
 		container.add(lblD);
 		
 		btnEntrar = new JButton("Entrar");
+		btnEntrar.setIcon(new ImageIcon(AreaDoAlunoJF.class.getResource("/imgs/iconok.fw.png")));
 		btnEntrar.setForeground(new Color(102, 205, 170));
 		btnEntrar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
 		btnEntrar.setBounds(22, 268, 136, 37);
@@ -79,6 +83,7 @@ public class AreaDoAlunoJF extends JFrame {
 		btnEntrar.addActionListener(evento);
 		
 		btnEntrar_1 = new JButton("Entrar");
+		btnEntrar_1.setIcon(new ImageIcon(AreaDoAlunoJF.class.getResource("/imgs/iconbook.fw.png")));
 		btnEntrar_1.setForeground(new Color(102, 205, 170));
 		btnEntrar_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
 		btnEntrar_1.setBounds(231, 268, 136, 37);
@@ -92,6 +97,7 @@ public class AreaDoAlunoJF extends JFrame {
 		container.add(lblInformaesCurso);
 		
 		btnEntrar_2 = new JButton("Entrar");
+		btnEntrar_2.setIcon(new ImageIcon(AreaDoAlunoJF.class.getResource("/imgs/iconfolderuser.fw.png")));
 		btnEntrar_2.setForeground(new Color(102, 205, 170));
 		btnEntrar_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
 		btnEntrar_2.setBounds(416, 268, 136, 37);
@@ -115,8 +121,12 @@ public class AreaDoAlunoJF extends JFrame {
 			if(e.getSource() == btnEntrar_2)	{
 				//instruções para informações sobre o curso
 			}
-		}
-		
+		}	
+	}
+	
+	//recebendo o email para fazer buscas de informações
+	public void setEmail(String email)	{
+		this.email = email;
 	}
 	
 	//metodo main para testar a janela, deve-se ser removido na versão final

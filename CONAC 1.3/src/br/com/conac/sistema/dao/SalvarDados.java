@@ -91,7 +91,7 @@ public class SalvarDados {
 		
 	}
 	
-	//metodo para salvar a descrição da ementa das diciplinas
+	/*//metodo para salvar a descrição da ementa das diciplinas
 	public void salvarEmenta(String descricaoDaEmenta, String codigo) {
 		//instruções para gravar a ementa
 		FileWriter file;
@@ -105,5 +105,5 @@ public class SalvarDados {
 			//ERRO
 			e.printStackTrace();
 		}
-	}
+	}*/
 }
