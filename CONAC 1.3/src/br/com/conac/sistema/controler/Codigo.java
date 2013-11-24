@@ -1,6 +1,5 @@
 package br.com.conac.sistema.controler;
 
-import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -9,13 +8,13 @@ import java.io.IOException;
  * */
 public class Codigo {
 	
-	//atributos
 	private int codigo;
 	
-	//metodos	
+	/* metodos */	
 	private int getCodigo() {
 		return codigo;
 	}
+	
 	public int criarCodigo(int numMax) {
 		this.codigo = 1 + (int)(Math.random()* numMax);
 		
@@ -23,19 +22,20 @@ public class Codigo {
 	}
 	
 	//verifica se codigo ja existe
-	public boolean verificar(String pasta,String cod) throws IOException	{
+	public boolean verificar(String pasta,String cod) throws IOException  {
 		boolean retorno = false;
 
 		//verifica o codigo na base de dados
-		BufferedReader arq = new BufferedReader(new FileReader(pasta + cod + ".txt"));
-		//verifica se há um arquivo existente
-		if(arq.ready() == true)	{
+		FileReader arq = new FileReader(pasta + cod + ".txt");
+		boolean s = arq.ready();
+		arq.close();
+		
+		if(s == true)	{
 			retorno = true;
 		}
 		else 	{
 			retorno = false;
 		}		
-		arq.close();//fecha o arquivo para nova leitura pois os readLines seguem a sequencia
 
 		return retorno;//retorna a validação do usuario
 	}

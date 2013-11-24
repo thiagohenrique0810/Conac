@@ -58,16 +58,16 @@ public class JPainelNotas extends JPanel	{
 		};
 		dados = new String[][] {
 				{
-					"00001","Exemplo01 diciplina","APROVADO"
+					"00001","Programação orientada a objetos","APROVADO"
 				},
 				{
-					"00002","Exemplo02 diciplina","APROVADO"
+					"00002","Filosofia e etica","APROVADO"
 				},
 				{
-					"00003","Exemplo03 diciplina","RECUPERAÇÃO"
+					"00003","Matematica II","RECUPERAÇÃO"
 				},
 				{
-					"00004","Exemplo04 diciplina","REPROVADO"
+					"00004","Laboratorio de programação","REPROVADO"
 				}
 		};
 		
@@ -102,32 +102,32 @@ public class JPainelNotas extends JPanel	{
 		//table.setFillsViewportHeight(true);//adapta-se ao scroll
 		
 		scroll = new JScrollPane(table);
-		scroll.setBounds(26, 76, 312, 184);
+		scroll.setBounds(26, 76, 362, 184);
 		panel.add(scroll);
 
 		JLabel lblNewLabel = new JLabel("Nota 01:");
 		lblNewLabel.setForeground(new Color(0, 128, 128));
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel.setBounds(370, 105, 103, 31);
+		lblNewLabel.setBounds(412, 105, 103, 31);
 		panel.add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("Nota 02:");
 		lblNewLabel_1.setForeground(new Color(0, 128, 128));
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(370, 158, 103, 31);
+		lblNewLabel_1.setBounds(412, 158, 103, 31);
 		panel.add(lblNewLabel_1);
 
 		JLabel lblNotaDaFinal = new JLabel("Nota da Final:");
 		lblNotaDaFinal.setForeground(new Color(255, 140, 0));
 		lblNotaDaFinal.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNotaDaFinal.setBounds(370, 211, 103, 31);
+		lblNotaDaFinal.setBounds(412, 211, 103, 31);
 		panel.add(lblNotaDaFinal);
 
 		tfnota01 = new JTextField();
 		tfnota01.setBackground(Color.WHITE);
 		tfnota01.setEditable(false);
 		tfnota01.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		tfnota01.setBounds(489, 105, 86, 27);
+		tfnota01.setBounds(531, 105, 86, 27);
 		panel.add(tfnota01);
 		tfnota01.setColumns(10);
 
@@ -135,7 +135,7 @@ public class JPainelNotas extends JPanel	{
 		tfnota02.setBackground(Color.WHITE);
 		tfnota02.setEditable(false);
 		tfnota02.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		tfnota02.setBounds(489, 158, 86, 27);
+		tfnota02.setBounds(531, 158, 86, 27);
 		panel.add(tfnota02);
 		tfnota02.setColumns(10);
 
@@ -143,21 +143,21 @@ public class JPainelNotas extends JPanel	{
 		tfnotafinal.setBackground(Color.WHITE);
 		tfnotafinal.setEditable(false);
 		tfnotafinal.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		tfnotafinal.setBounds(489, 211, 86, 27);
+		tfnotafinal.setBounds(531, 211, 86, 27);
 		panel.add(tfnotafinal);
 		tfnotafinal.setColumns(10);
 
 		JLabel lblMdia = new JLabel("M\u00E9dia:");
 		lblMdia.setForeground(new Color(0, 0, 255));
 		lblMdia.setFont(new Font("Tahoma", Font.PLAIN, 21));
-		lblMdia.setBounds(640, 118, 68, 31);
+		lblMdia.setBounds(654, 117, 68, 31);
 		panel.add(lblMdia);
 
 		tfmedia = new JTextField();
 		tfmedia.setBackground(Color.WHITE);
 		tfmedia.setEditable(false);
 		tfmedia.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		tfmedia.setBounds(627, 160, 110, 45);
+		tfmedia.setBounds(641, 159, 110, 45);
 		panel.add(tfmedia);
 		tfmedia.setColumns(10);
 
