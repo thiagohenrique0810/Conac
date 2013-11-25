@@ -1,0 +1,13 @@
+24786
+Matematica I
+Direito, computação, administração
+36 horas
+Matrizes. 
+Determinantes. 
+Sistemas lineares de uma variável real: 
+funções elementares e funções exponencial e logarítmica; 
+vizinhança. 
+Ponto de acumulação. 
+Limite. Continuidade. 
+Definição e interpretação geométrica da derivada. 
+Cálculo de derivada a partir de definição.
