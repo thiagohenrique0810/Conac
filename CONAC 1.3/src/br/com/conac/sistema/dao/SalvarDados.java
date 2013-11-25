@@ -6,7 +6,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.swing.JOptionPane;
+
 import br.com.conac.sistema.model.Aluno;
+import br.com.conac.sistema.model.Diciplina;
 import br.com.conac.sistema.model.Professor;
 import br.com.conac.sistema.model.Secretario;
 
@@ -91,19 +94,28 @@ public class SalvarDados {
 		
 	}
 	
-	/*//metodo para salvar a descrição da ementa das diciplinas
-	public void salvarEmenta(String descricaoDaEmenta, String codigo) {
-		//instruções para gravar a ementa
-		FileWriter file;
-		try {
-			file = new FileWriter(new File("bd\\diciplinas\\ementas\\" + codigo + ".txt"),true);
-			PrintWriter arq = new PrintWriter(file);
-			//linhas que será gravada a ementa
-			arq.print(descricaoDaEmenta);
-			arq.close();
-		} catch (IOException e) {
-			//ERRO
-			e.printStackTrace();
+	//metodo para salvar informações do secretario
+		public void salvarDiciplina(Diciplina diciplina) {
+			
+			FileWriter file;
+			try {
+				file = new FileWriter(new File("bd\\diciplinas\\" + diciplina.getCodigo() + ".txt"),true);
+				PrintWriter arq = new PrintWriter(file);
+				
+				arq.println(diciplina.getCodigo());
+				arq.println(diciplina.getNomeDiciplina());
+				arq.println(diciplina.getCurso());
+				arq.println(diciplina.getCargaHoraria());
+				arq.println(diciplina.getDescricaoDaEmenta());
+				arq.close();
+				
+				JOptionPane.showMessageDialog(null, "Diciplina salva com sucesso!");
+			} catch (IOException e) {
+				//ERRO
+				e.printStackTrace();
+			}
+			
 		}
-	}*/
+	
+	
 }

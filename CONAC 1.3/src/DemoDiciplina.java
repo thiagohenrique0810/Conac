@@ -16,27 +16,6 @@ public class DemoDiciplina {
 			a.notas.setNota01(10);
 			a.notas.setNota02(10);
 			
-			
-			//instruções para gerar codigo pra diciplina
-			String codigoGerado = "0";
-			boolean valid = true;
-
-			while(valid)	{
-				int cod = new Codigo().criarCodigo(10000);
-				codigoGerado = String.valueOf(cod);
-				
-				try {
-					if((new Codigo().verificar("bd\\diciplinas\\", codigoGerado)) == true)	{
-						valid = true;
-					}else	{
-						valid = false;
-					}
-				} catch (IOException e) {
-					a.setCodigo(codigoGerado);
-				}
-				
-			}
-			
 			System.out.println(
 				a.getCodigo() + "\n"
 				+ a.getDescricaoDaEmenta() + "\n"

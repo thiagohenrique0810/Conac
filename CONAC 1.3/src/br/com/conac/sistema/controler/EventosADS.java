@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 
+import br.com.conac.sistema.view.PainelGerenciamentoSecretario;
+
 
 public class EventosADS implements ActionListener {
 	private JRadioButton rdbtnProfessor;
@@ -37,6 +39,7 @@ public class EventosADS implements ActionListener {
 		
 		if(e.getSource() == btnNewButton)	{
 			//instruções para gerenciamento dos academicos
+			new PainelGerenciamentoSecretario().setVisible(true);
 		}
 		if(rdbtnAluno.isSelected() == true)	{
 			//instrução para dizer o tipo de cadastro se for aluno
