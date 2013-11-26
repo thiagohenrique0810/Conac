@@ -2,6 +2,7 @@ package br.com.conac.sistema.controler;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
@@ -55,7 +56,12 @@ public class EventosADS implements ActionListener {
 		}
 		if(e.getSource() == btnCadastrese)	{
 			//instruções para abrir a janela de cadastro
-			cadastro.mostrarJanelaCadastro(tipoCadastro);
+			try {
+				cadastro.mostrarJanelaCadastro(tipoCadastro);
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 }

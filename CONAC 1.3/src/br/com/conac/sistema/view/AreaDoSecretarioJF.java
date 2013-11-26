@@ -24,7 +24,10 @@ import br.com.conac.sistema.controler.EventosADS;
 
 
 import java.awt.Toolkit;
+import java.text.ParseException;
+
 import javax.swing.ImageIcon;
+import javax.swing.text.MaskFormatter;
 
 public class AreaDoSecretarioJF extends JFrame	{
 	private JButton btnNewButton;
@@ -37,7 +40,7 @@ public class AreaDoSecretarioJF extends JFrame	{
 	private JRadioButton rdbtnAluno;
 	private JRadioButton rdbtnGerente;
 
-	public AreaDoSecretarioJF() {
+	public AreaDoSecretarioJF() throws ParseException {
 		super("Painel do secretario");
 		
 		setResizable(false);

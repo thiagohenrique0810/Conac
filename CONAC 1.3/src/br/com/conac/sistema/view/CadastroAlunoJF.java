@@ -10,6 +10,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -21,6 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
 
 import br.com.conac.sistema.dao.LoginDB;
 import br.com.conac.sistema.dao.SalvarDados;
@@ -60,6 +62,8 @@ public class CadastroAlunoJF extends JFrame {
 	private JTextField tfDataNasc;
 	private JPasswordField jpassword;
 	
+	private MaskFormatter maskcpf,maskemail,maskdata,masktelefone,maskano;
+	
 	private Container container;
 
 	private Aluno novoAluno;
@@ -68,7 +72,7 @@ public class CadastroAlunoJF extends JFrame {
 	private JLabel label;
 
 
-	public CadastroAlunoJF() {
+	public CadastroAlunoJF() throws ParseException  {
 		evento = new TratadorEventos();
 
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Thiago Henrique\\Documents\\workspace\\CONAC 1.2\\src\\poo\\conac\\sistema\\view\\imgs\\logo.fw.png"));
@@ -80,6 +84,11 @@ public class CadastroAlunoJF extends JFrame {
 
 		container.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		container.setLayout(null);
+		
+		masktelefone = new MaskFormatter("(##)####-####");
+		maskano = new MaskFormatter("####");
+		maskcpf = new MaskFormatter("###.###.###-##");
+		maskdata = new MaskFormatter("##/##/####");
 
 		lblFormulario = new JLabel("Formulario de cadastro aluno");
 		lblFormulario.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -143,14 +152,14 @@ public class CadastroAlunoJF extends JFrame {
 		container.add(tfNomeMae);
 		tfNomeMae.setColumns(10);
 		tfNomeMae.addActionListener(evento);
-
-		tfAnoEntrada = new JTextField();
+		
+		tfAnoEntrada = new JFormattedTextField(maskano);
 		tfAnoEntrada.setBounds(128, 390, 60, 20);
 		container.add(tfAnoEntrada);
 		tfAnoEntrada.setColumns(10);
 		tfAnoEntrada.addActionListener(evento);
-
-		tfAnoSaida = new JTextField();
+		
+		tfAnoSaida = new JFormattedTextField(maskano);
 		tfAnoSaida.setBounds(373, 264, 86, 20);
 		container.add(tfAnoSaida);
 		tfAnoSaida.setColumns(10);
@@ -193,8 +202,8 @@ public class CadastroAlunoJF extends JFrame {
 		container.add(tfEmail);
 		tfEmail.setColumns(10);
 		tfEmail.addActionListener(evento);
-
-		tfFCpf = new JFormattedTextField();
+		
+		tfFCpf = new JFormattedTextField(maskcpf);
 		tfFCpf.setBounds(128, 264, 96, 20);
 		container.add(tfFCpf);
 		tfFCpf.addActionListener(evento);
@@ -213,8 +222,8 @@ public class CadastroAlunoJF extends JFrame {
 		choice_1.addItem("Computação");
 		choice_1.addItem("Direito");
 		container.add(choice_1);
-
-		tfDataNasc = new JFormattedTextField();
+		
+		tfDataNasc = new JFormattedTextField(maskdata);
 		tfDataNasc.setBounds(373, 201, 96, 20);
 		container.add(tfDataNasc);
 		tfDataNasc.addActionListener(evento);
@@ -234,7 +243,7 @@ public class CadastroAlunoJF extends JFrame {
 		lblF.setBounds(259, 519, 46, 14);
 		getContentPane().add(lblF);
 		
-		txtFone = new JTextField();
+		txtFone = new JFormattedTextField(masktelefone);
 		txtFone.setBounds(362, 516, 117, 20);
 		getContentPane().add(txtFone);
 		txtFone.setColumns(10);
@@ -330,7 +339,7 @@ public class CadastroAlunoJF extends JFrame {
 	}
 
 	//metodo main pra teste
-	public static void main(String args[])	{
+	public static void main(String args[]) throws ParseException 	{
 		CadastroAlunoJF t = new CadastroAlunoJF();
 		t.setVisible(true);
 	}

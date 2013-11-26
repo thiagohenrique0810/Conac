@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
 
 import javax.swing.JOptionPane;
 
@@ -87,7 +88,7 @@ public class LoginDB {
 	}
 
 	//mostrar janela da area de acesso do usuario
-	public void mostrarJanelaDeAcesso(String email, char[] password) throws IOException {
+	public void mostrarJanelaDeAcesso(String email, char[] password) throws IOException, ParseException {
 		this.setSenha(password);
 		//fazendo leitura de arquivos dentro da pasta especificada
 		try {

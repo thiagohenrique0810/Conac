@@ -4,6 +4,7 @@ import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.text.ParseException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -46,6 +47,9 @@ public class EventoLogin implements ActionListener	{
 			} catch (IOException e1) {
 				// caso erro
 				JOptionPane.showMessageDialog(null, "Senha ou login invalidos");
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 		}
 

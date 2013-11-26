@@ -1,5 +1,7 @@
 package br.com.conac.sistema.controler;
 
+import java.text.ParseException;
+
 import br.com.conac.sistema.view.CadastroAlunoJF;
 import br.com.conac.sistema.view.CadastroProfessorJF;
 import br.com.conac.sistema.view.CadastroSecretarioJF;
@@ -16,7 +18,7 @@ public class NovoCadastro {
 		return tipoDeCadastro;
 	}
 	
-	public void mostrarJanelaCadastro(String tipoCadastro)	{
+	public void mostrarJanelaCadastro(String tipoCadastro) throws ParseException	{
 		//recebe o tipo de cadastro
 		this.setTipoDeCadastro(tipoCadastro);
 		
