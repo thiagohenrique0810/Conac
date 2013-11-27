@@ -99,7 +99,7 @@ public class SalvarDados {
 			
 			FileWriter file;
 			try {
-				file = new FileWriter(new File("bd\\diciplinas\\" + diciplina.getCodigo() + ".txt"),true);
+				file = new FileWriter(new File("bd\\diciplinas\\" + diciplina.getCurso() + "\\" + diciplina.getCodigo() + ".txt"),true);
 				PrintWriter arq = new PrintWriter(file);
 				
 				arq.println(diciplina.getCodigo());

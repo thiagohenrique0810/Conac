@@ -16,6 +16,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class PainelGerenciamentoSecretario extends JFrame	{
 
 	private Container container;
+	private JTabbedPane abas;
 
 	public PainelGerenciamentoSecretario() {
 
@@ -25,7 +26,7 @@ public class PainelGerenciamentoSecretario extends JFrame	{
 
 		container.setBackground(new Color(255, 255, 240));
 
-		JTabbedPane abas = new JTabbedPane();
+		abas = new JTabbedPane();
 		abas.add("Nova diciplina",new JPainelNovaDiciplina());
 		container.add(abas);
 

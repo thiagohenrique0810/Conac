@@ -1,5 +1,6 @@
 package br.com.conac.sistema.view;
 
+import java.awt.Choice;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.TextArea;
@@ -22,7 +23,7 @@ public class JPainelNovaDiciplina extends JPanel	{
 
 	private JPanel panel;
 	private JTextField tfNome;
-	private JTextField tfCurso;
+	private Choice chCurso;
 	private JTextField tfCargaHoraria;
 	private JTextField tfCodigo;
 
@@ -58,11 +59,13 @@ public class JPainelNovaDiciplina extends JPanel	{
 		lblCursoDiciplinar.setBounds(10, 152, 123, 25);
 		panel.add(lblCursoDiciplinar);
 
-		tfCurso = new JTextField();
-		tfCurso.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		tfCurso.setBounds(139, 152, 328, 25);
-		panel.add(tfCurso);
-		tfCurso.setColumns(10);
+		chCurso = new Choice();
+		chCurso.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		chCurso.setBounds(139, 152, 328, 25);
+		chCurso.add("Computação");
+		chCurso.add("Direito");
+		chCurso.add("Administração");
+		panel.add(chCurso);
 
 		JLabel lblCargaHoraria = new JLabel("Carga horaria:");
 		lblCargaHoraria.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -140,7 +143,6 @@ public class JPainelNovaDiciplina extends JPanel	{
 			//botao limpar campos
 			if(e.getSource() == btnLimparCampos)	{
 				tfNome.setText("");
-				tfCurso.setText("");
 				tfCargaHoraria.setText("");
 			}
 
@@ -156,8 +158,8 @@ public class JPainelNovaDiciplina extends JPanel	{
 	public Diciplina getInfomacoes()	{
 		Diciplina d = new Diciplina();
 		
-		d.setNomeDiciplina(tfNome.getText());
-		d.setCurso(tfCurso.getText());
+		d.setNomeDiciplina(tfNome.getText());		
+		d.setCurso(chCurso.getSelectedItem());
 		d.setCodigo(tfCodigo.getText());
 		d.setCargaHoraria(tfCargaHoraria.getText());
 		d.setDescricaoDaEmenta(textArea.getText());

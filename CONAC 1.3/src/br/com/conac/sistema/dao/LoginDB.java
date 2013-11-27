@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import br.com.conac.sistema.view.AreaDoAlunoJF;
@@ -111,6 +112,7 @@ public class LoginDB {
 				AreaDoAlunoJF aluno = new AreaDoAlunoJF();
 				aluno.setEmail(email);
 				aluno.setVisible(true);
+				aluno.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
 		} catch (FileNotFoundException e) {
 			JOptionPane.showMessageDialog(null, "Problema ao indentificar usuario");
