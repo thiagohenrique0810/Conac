@@ -24,9 +24,11 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
+import br.com.conac.sistema.controler.CJanelaDiciplina;
 import br.com.conac.sistema.dao.LoginDB;
 import br.com.conac.sistema.dao.SalvarDados;
 import br.com.conac.sistema.model.Aluno;
+
 import java.awt.SystemColor;
 
 
@@ -263,6 +265,10 @@ public class CadastroAlunoJF extends JFrame {
 
 			if(e.getSource() == btnEnviar)	{
 				//instruções para salvar dados
+				
+				//escolhendo as diciplinas
+				CJanelaDiciplina dc = new CJanelaDiciplina(choice_1.getSelectedItem());
+				
 				try {
 					if((l.verificar(tfEmail.getText())) == false)	{
 						salvar.salvarInformacoesAluno(getInformacoes());

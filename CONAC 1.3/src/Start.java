@@ -24,8 +24,6 @@ public class Start {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException | InstantiationException
 				| IllegalAccessException | UnsupportedLookAndFeelException e) {
-			// TODO Auto-generated catch block
-			//LOG.error(e.getMessage());
 		}
 		LoginJF l = new LoginJF();
 		l.setVisible(true);
