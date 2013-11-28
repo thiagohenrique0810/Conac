@@ -268,9 +268,16 @@ public class CadastroAlunoJF extends JFrame {
 				
 				//escolhendo as diciplinas
 				CJanelaDiciplina dc = new CJanelaDiciplina(choice_1.getSelectedItem());
+				try {
+					dc.mostrarJanelaEscolha();
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 				
 				try {
-					if((l.verificar(tfEmail.getText())) == false)	{
+					if((l.verificar(tfEmail.getText())) == false)	{						
+						
 						salvar.salvarInformacoesAluno(getInformacoes());
 						JOptionPane.showMessageDialog(null, "Arquivo salvo com sucesso!");
 					}

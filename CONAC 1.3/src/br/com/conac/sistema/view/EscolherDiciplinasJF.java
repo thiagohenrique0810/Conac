@@ -12,6 +12,10 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.DefaultTableModel;
+
+import br.com.conac.sistema.model.Diciplina;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -23,6 +27,12 @@ public class EscolherDiciplinasJF extends JFrame {
 	private JButton btnCancelar;
 	private JButton btnSelecionar;
 	private JButton btnSalvar;
+	
+	private Diciplina diciplinasGeradas[];
+	
+	private String codigos[];
+	private String diciplinas[];
+	private String cargaHorarias[];
 	
 	public EscolherDiciplinasJF() {
 		super("Escolher as diciplinas a cursar");
@@ -40,11 +50,31 @@ public class EscolherDiciplinasJF extends JFrame {
 			"Carga horaria"
 		};
 		
-		String dados[][] = {
-				
-		};
+		for(int x = 0;x < diciplinasGeradas.length;x++)	{
+			
+			codigos[x] = new String();
+			diciplinas[x] = new String();
+			cargaHorarias[x] = new String();
+			
+			codigos[x] = this.diciplinasGeradas[x].getCodigo();
+			diciplinas[x] = this.diciplinasGeradas[x].getNomeDiciplina();
+			cargaHorarias[x] = this.diciplinasGeradas[x].getCargaHoraria();
+		}	
 		
-		table = new JTable(dados,colunas);
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		
+		for(int x = 0;x < diciplinasGeradas.length;x++)	{
+			model.addRow(new Object[] {codigos[x],diciplinas[x],cargaHorarias[x]});
+		}
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+				new Object[][]	{
+				},
+				colunas
+				));
+		
+		
 		
 		scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 76, 430, 324);
@@ -77,7 +107,7 @@ public class EscolherDiciplinasJF extends JFrame {
 		
 	}
 	
-	public static void main(String args[])	{
+	public static void main(String args[]) 	{
 		
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -86,5 +116,10 @@ public class EscolherDiciplinasJF extends JFrame {
 		}
 		
 		new EscolherDiciplinasJF().setVisible(true);
+	}
+
+	//recuperando lista de disciplinas
+	public void setDiciplinas(Diciplina[] diciplinas) {
+		this.diciplinasGeradas = diciplinas;
 	}
 }

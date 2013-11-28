@@ -33,6 +33,7 @@ public class JPainelNovaDiciplina extends JPanel	{
 	private JButton btnLimparCampos;
 	private JButton btnSalvar;
 
+	
 	public JPainelNovaDiciplina()	{
 		panel = new JPanel();
 		setLayout(null);
