@@ -20,7 +20,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class EscolherDiciplinasJF extends JFrame {
-	
+
 	private Container container;
 	private JTable table;
 	private JScrollPane scrollPane;
@@ -28,98 +28,83 @@ public class EscolherDiciplinasJF extends JFrame {
 	private JButton btnSelecionar;
 	private JButton btnSalvar;
 	
-	private Diciplina diciplinasGeradas[];
+	private Diciplina diciplinasRecuperadas[];
 	
 	private String codigos[];
 	private String diciplinas[];
 	private String cargaHorarias[];
 	
+	private DefaultTableModel model;
+
 	public EscolherDiciplinasJF() {
 		super("Escolher as diciplinas a cursar");
 		container = getContentPane();
 		container.setLayout(null);
-		
+
 		JLabel lblEscolhaAsDiciplinas = new JLabel("Escolha as diciplinas a desejadas");
 		lblEscolhaAsDiciplinas.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblEscolhaAsDiciplinas.setBounds(162, 11, 274, 34);
-		container.add(lblEscolhaAsDiciplinas);
+		container.add(lblEscolhaAsDiciplinas);		
 		
 		String colunas[] = {
-			"Codigo",
-			"Diciplina",
-			"Carga horaria"
+				"Codigo",
+				"Diciplina",
+				"Carga horaria"
 		};
 		
-		for(int x = 0;x < diciplinasGeradas.length;x++)	{
-			
-			codigos[x] = new String();
-			diciplinas[x] = new String();
-			cargaHorarias[x] = new String();
-			
-			codigos[x] = this.diciplinasGeradas[x].getCodigo();
-			diciplinas[x] = this.diciplinasGeradas[x].getNomeDiciplina();
-			cargaHorarias[x] = this.diciplinasGeradas[x].getCargaHoraria();
-		}	
+		Object dados[][] ={};
 		
-		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		model = new DefaultTableModel(dados,colunas);
+
+		/*for (int x = 0; x < diciplinasRecuperadas.length; x++) {
+			model.addRow(new String[] {codigos[x],diciplinas[x],cargaHorarias[x]});
+		}*/
 		
-		for(int x = 0;x < diciplinasGeradas.length;x++)	{
-			model.addRow(new Object[] {codigos[x],diciplinas[x],cargaHorarias[x]});
-		}
-		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-				new Object[][]	{
-				},
-				colunas
-				));
-		
-		
-		
+		table = new JTable(model);		
+
 		scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 76, 430, 324);
 		container.add(scrollPane);
-		
+
 		btnSelecionar = new JButton("Selecionar todas");
 		btnSelecionar.setBounds(450, 94, 124, 34);
 		container.add(btnSelecionar);
-		
+
 		btnSalvar = new JButton("Salvar");
 		btnSalvar.setBounds(450, 156, 124, 34);
 		container.add(btnSalvar);
-		
+
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(450, 216, 124, 34);
 		container.add(btnCancelar);
-		
+
 		setSize(600,450);
 	}
-	
+
+	//recuperando lista de disciplinas
+	public void setDiciplinas(Diciplina[] d) {
+		
+		this.diciplinasRecuperadas = d;
+		
+		for(int x = 0;x < d.length;x++)	{
+			
+			this.codigos[x] = new String();
+			this.diciplinas[x] = new String();
+			this.cargaHorarias[x] = new String();
+			
+			this.codigos[x] = d[x].getCodigo();
+			this.diciplinas[x] = d[x].getNomeDiciplina();
+			this.cargaHorarias[x] = d[x].getCargaHoraria();
+		}
+	}
 	
 	//tratamentos de eventos do botao
 	public class TratadorEventos implements ActionListener	{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
+			// TODO Auto-generated method stub	
 		}
-		
-	}
-	
-	public static void main(String args[]) 	{
-		
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (ClassNotFoundException | InstantiationException
-				| IllegalAccessException | UnsupportedLookAndFeelException e) {
-		}
-		
-		new EscolherDiciplinasJF().setVisible(true);
 	}
 
-	//recuperando lista de disciplinas
-	public void setDiciplinas(Diciplina[] diciplinas) {
-		this.diciplinasGeradas = diciplinas;
-	}
 }

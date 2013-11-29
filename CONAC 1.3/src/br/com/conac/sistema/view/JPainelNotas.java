@@ -64,10 +64,34 @@ public class JPainelNotas extends JPanel	{
 					"00002","Filosofia e etica","APROVADO"
 				},
 				{
-					"00003","Matematica II","RECUPERAÇÃO"
+					"00003","Matematica I","RECUPERAÇÃO"
 				},
 				{
 					"00004","Laboratorio de programação","REPROVADO"
+				},
+				{
+					"00005","Programação orientada a objetos","APROVADO"
+				},
+				{
+					"00006","Filosofia e etica","APROVADO"
+				},
+				{
+					"00007","Matematica II","RECUPERAÇÃO"
+				},
+				{
+					"00008","Comportamento organizacional","REPROVADO"
+				},
+				{
+					"00009","Estatistica","APROVADO"
+				},
+				{
+					"00010","Ciências sociais e politicas","APROVADO"
+				},
+				{
+					"00011","Matematica II","RECUPERAÇÃO"
+				},
+				{
+					"00012","Laboratorio de programação","REPROVADO"
 				}
 		};
 		

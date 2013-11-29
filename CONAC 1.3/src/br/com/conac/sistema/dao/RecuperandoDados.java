@@ -24,7 +24,8 @@ public class RecuperandoDados {
 		for(int x = 0; x < arquivos.length;x++)	{
 			BufferedReader arq = new BufferedReader(new FileReader("bd\\diciplinas\\" + tipoCurso + "\\" + arquivos[x]));
 			
-			diciplinas[x] = new Diciplina();			
+			diciplinas[x] = new Diciplina();
+			
 			diciplinas[x].setCodigo(arq.readLine());
 			diciplinas[x].setNomeDiciplina(arq.readLine());
 			diciplinas[x].setCurso(arq.readLine());
@@ -34,5 +35,18 @@ public class RecuperandoDados {
 		}
 
 		return diciplinas;
-	} 
+	}
+	
+	
+	//testando a classe
+	public static void main(String args[]) throws IOException	{
+		RecuperandoDados r = new RecuperandoDados();
+		Diciplina[] d = r.procurarDiciplinas("Computação");
+		
+		for (int x = 0; x < d.length; x++) {
+			System.out.println(d[x].getCargaHoraria());
+		}
+		
+	}
+	
 }

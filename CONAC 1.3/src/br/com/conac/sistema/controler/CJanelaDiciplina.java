@@ -4,13 +4,12 @@ import java.io.IOException;
 
 import br.com.conac.sistema.dao.RecuperandoDados;
 import br.com.conac.sistema.view.EscolherDiciplinasJF;
-import br.com.conac.sistema.view.JPainelDados;
-import br.com.conac.sistema.view.JPainelNovaDiciplina;
 
 public class CJanelaDiciplina {
 	
 	private String tipoCurso;
 	private EscolherDiciplinasJF janela;
+	private RecuperandoDados busca;
 	
 	public CJanelaDiciplina(String tipoCurso) {
 		setTipoCurso(tipoCurso);
@@ -24,12 +23,13 @@ public class CJanelaDiciplina {
 		this.tipoCurso = tipoCurso;
 	}
 
-	public void mostrarJanelaEscolha() throws IOException 	{
+	public void mostrarJanelaEscolha() throws IOException	{
+		janela = new EscolherDiciplinasJF();
+		busca = new RecuperandoDados();
+		
 		if(getTipoCurso().equals("Computação"))	{
 			//buscando todos as diciplinas cadastradas
-			RecuperandoDados busca = new RecuperandoDados();
-			janela = new EscolherDiciplinasJF();
-			janela.setDiciplinas(busca.procurarDiciplinas(getTipoCurso()));
+			janela.setDiciplinas(busca.procurarDiciplinas(getTipoCurso()));//recebendo array de diciplinas
 			janela.setVisible(true);
 		}
 		else if(getTipoCurso().equals("Administração"))	{
@@ -40,6 +40,8 @@ public class CJanelaDiciplina {
 		}
 	}
 	
+	public static void main(String args[]) throws IOException	{
+		new CJanelaDiciplina("Computação").mostrarJanelaEscolha();
+	}
 	
-
 }

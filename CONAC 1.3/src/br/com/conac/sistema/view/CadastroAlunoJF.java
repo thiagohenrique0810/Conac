@@ -272,7 +272,7 @@ public class CadastroAlunoJF extends JFrame {
 					dc.mostrarJanelaEscolha();
 				} catch (IOException e2) {
 					// TODO Auto-generated catch block
-					e2.printStackTrace();
+					//e2.printStackTrace();
 				}
 				
 				try {

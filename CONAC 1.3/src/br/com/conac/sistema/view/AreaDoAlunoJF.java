@@ -112,6 +112,8 @@ public class AreaDoAlunoJF extends JFrame {
 			
 			if(e.getSource() == btnEntrar)	{
 				//instruções para situação e notas
+				PainelDoAluno p = new PainelDoAluno();
+				p.setVisible(true);
 			}
 			
 			if(e.getSource() == btnEntrar_1)	{
