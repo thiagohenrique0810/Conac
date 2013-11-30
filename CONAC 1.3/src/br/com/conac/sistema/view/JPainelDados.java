@@ -22,7 +22,7 @@ public class JPainelDados extends JPanel {
 	private JTextField tfEmail;
 	private JTextField tfCpf;
 	private JTextField tfDataNasc;
-	private JTextField textField;
+	private JTextField tfTelefone;
 	
 	private Aluno aluno;
 	
@@ -125,12 +125,13 @@ public class JPainelDados extends JPanel {
 		lblTelefone.setBounds(10, 278, 89, 32);
 		panel.add(lblTelefone);
 		
-		textField = new JTextField();
-		textField.setBackground(Color.WHITE);
-		textField.setEditable(false);
-		textField.setBounds(127, 274, 195, 32);
-		panel.add(textField);
-		textField.setColumns(10);
+		tfTelefone = new JTextField();
+		tfTelefone.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		tfTelefone.setBackground(Color.WHITE);
+		tfTelefone.setEditable(false);
+		tfTelefone.setBounds(127, 274, 195, 32);
+		panel.add(tfTelefone);
+		tfTelefone.setColumns(10);
 		
 		JButton btnSair = new JButton("Sair");
 		btnSair.setForeground(new Color(0, 139, 139));
@@ -149,6 +150,7 @@ public class JPainelDados extends JPanel {
 		tfEndereco.setText(getAluno().getEndereco());
 		tfNomeMae.setText(getAluno().getNomeDaMae());
 		tfCpf.setText(getAluno().getCpf());
+		tfTelefone.setText(getAluno().getTelefone());
 	}
 	
 	public Aluno getAluno() {
