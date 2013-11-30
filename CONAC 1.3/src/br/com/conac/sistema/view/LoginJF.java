@@ -74,5 +74,7 @@ public class LoginJF extends JFrame	{
 		lblNewLabel_2.setIcon(new ImageIcon(LoginJF.class.getResource("/imgs/logo.fw.png")));
 		lblNewLabel_2.setBounds(154, 11, 190, 64);
 		getContentPane().add(lblNewLabel_2);
+		
+		textField.setText("thiagohenrique0810@hotmail.com");
 	}
 }

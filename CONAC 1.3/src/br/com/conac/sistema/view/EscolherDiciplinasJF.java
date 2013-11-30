@@ -55,10 +55,6 @@ public class EscolherDiciplinasJF extends JFrame {
 		Object dados[][] ={};
 		
 		model = new DefaultTableModel(dados,colunas);
-
-		/*for (int x = 0; x < diciplinasRecuperadas.length; x++) {
-			model.addRow(new String[] {codigos[x],diciplinas[x],cargaHorarias[x]});
-		}*/
 		
 		table = new JTable(model);		
 
@@ -80,11 +76,23 @@ public class EscolherDiciplinasJF extends JFrame {
 
 		setSize(600,450);
 	}
-
+	
+	public void carregarInformacoes()	{
+		for (int x = 0; x < diciplinasRecuperadas.length; x++) {
+			model.addRow(new String[] {codigos[x],diciplinas[x],cargaHorarias[x]});
+		}
+	}
+	
 	//recuperando lista de disciplinas
 	public void setDiciplinas(Diciplina[] d) {
 		
+		this.diciplinasRecuperadas = new Diciplina[d.length];
 		this.diciplinasRecuperadas = d;
+		
+		this.codigos = new String[d.length];
+		this.diciplinas = new String[d.length];
+		this.cargaHorarias = new String[d.length];
+		
 		
 		for(int x = 0;x < d.length;x++)	{
 			

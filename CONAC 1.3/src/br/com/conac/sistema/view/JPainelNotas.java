@@ -16,6 +16,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.TableCellRenderer;
 
+import br.com.conac.sistema.model.Aluno;
+
 public class JPainelNotas extends JPanel	{
 	
 	private JPanel panel;

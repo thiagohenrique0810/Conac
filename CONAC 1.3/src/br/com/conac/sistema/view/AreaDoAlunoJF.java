@@ -11,9 +11,12 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+
+import br.com.conac.sistema.dao.RecuperandoDados;
 
 public class AreaDoAlunoJF extends JFrame {
 	
@@ -109,10 +112,17 @@ public class AreaDoAlunoJF extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			PainelDoAluno p = new PainelDoAluno();
+			RecuperandoDados r = new RecuperandoDados();
+			try {
+				p.setAluno(r.recuperandoDadosAluno(email));
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			
 			if(e.getSource() == btnEntrar)	{
 				//instruções para situação e notas
-				PainelDoAluno p = new PainelDoAluno();
 				p.setVisible(true);
 			}
 			
@@ -129,6 +139,10 @@ public class AreaDoAlunoJF extends JFrame {
 	//recebendo o email para fazer buscas de informações
 	public void setEmail(String email)	{
 		this.email = email;
+	}
+	
+	public String getEmail() {
+		return email;
 	}
 	
 	//metodo main para testar a janela, deve-se ser removido na versão final

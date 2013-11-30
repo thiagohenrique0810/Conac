@@ -4,8 +4,13 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
 import java.awt.Font;
+
 import javax.swing.JButton;
+
+import br.com.conac.sistema.model.Aluno;
+
 import java.awt.Color;
 
 public class JPainelDados extends JPanel {
@@ -18,6 +23,8 @@ public class JPainelDados extends JPanel {
 	private JTextField tfCpf;
 	private JTextField tfDataNasc;
 	private JTextField textField;
+	
+	private Aluno aluno;
 	
 	public JPainelDados()	{
 		
@@ -130,8 +137,20 @@ public class JPainelDados extends JPanel {
 		btnSair.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnSair.setBounds(299, 325, 145, 42);
 		panel.add(btnSair);
-		
-		
+			
 		setSize(761, 390);
 	}
+	
+	public void preencherDados()	{
+		tfNome.setText(getAluno().getNome());
+	}
+	
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setDados(Aluno aluno) {
+		this.aluno = aluno;
+	}
+	
 }

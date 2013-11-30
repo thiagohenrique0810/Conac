@@ -30,6 +30,7 @@ public class CJanelaDiciplina {
 		if(getTipoCurso().equals("Computação"))	{
 			//buscando todos as diciplinas cadastradas
 			janela.setDiciplinas(busca.procurarDiciplinas(getTipoCurso()));//recebendo array de diciplinas
+			janela.carregarInformacoes();
 			janela.setVisible(true);
 		}
 		else if(getTipoCurso().equals("Administração"))	{

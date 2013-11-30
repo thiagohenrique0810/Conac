@@ -2,10 +2,10 @@ package br.com.conac.sistema.dao;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import br.com.conac.sistema.model.Aluno;
 import br.com.conac.sistema.model.Diciplina;
 
 public class RecuperandoDados {
@@ -35,6 +35,41 @@ public class RecuperandoDados {
 		}
 
 		return diciplinas;
+	}
+	
+	public Aluno recuperandoDadosAluno(String email) throws IOException	{
+		//lendo arquivo
+		BufferedReader arq = new BufferedReader(new FileReader("bd\\academicos\\" + email + ".txt"));
+		String emailAluno = arq.readLine();
+		String senha = arq.readLine();
+		String tipoCadastro = arq.readLine();
+		String nome = arq.readLine();
+		String dataNasc = arq.readLine();
+		String cpf = arq.readLine();
+		String nomeMae = arq.readLine();
+		String endereco = arq.readLine();
+		String anoEntrada = arq.readLine();
+		arq.readLine();
+		String tipoPagamento = arq.readLine();
+		String curso = arq.readLine();
+		String situacaoAtual = arq.readLine();
+		
+		arq.close();//fechando arquivo
+		
+		//setando informações do aluno
+		Aluno a = new Aluno(nome,cpf);
+		a.setEmail(emailAluno);
+		a.setNome(nome);
+		a.setCpf(cpf);
+		a.setDataDeNascimento(dataNasc);
+		a.setNomeDaMae(nomeMae);
+		a.setEndereco(endereco);
+		a.setAnoEntrada(anoEntrada);
+		a.setTipoPagamento(tipoPagamento);
+		a.setCursoDesejado(curso);
+		a.setSituacaoAtual(situacaoAtual);
+		
+		return a;
 	}
 	
 	
