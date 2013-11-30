@@ -137,19 +137,26 @@ public class JPainelDados extends JPanel {
 		btnSair.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnSair.setBounds(299, 325, 145, 42);
 		panel.add(btnSair);
-			
+		
 		setSize(761, 390);
 	}
 	
 	public void preencherDados()	{
+		//recuperando dados do aluno
 		tfNome.setText(getAluno().getNome());
+		tfEmail.setText(getAluno().getEmail());
+		tfDataNasc.setText(getAluno().getDataDeNascimento());
+		tfEndereco.setText(getAluno().getEndereco());
+		tfNomeMae.setText(getAluno().getNomeDaMae());
+		tfCpf.setText(getAluno().getCpf());
 	}
 	
 	public Aluno getAluno() {
 		return aluno;
 	}
 
-	public void setDados(Aluno aluno) {
+	public void setAluno(Aluno aluno) {
+		this.aluno = new Aluno(aluno.getNome(),aluno.getCpf());
 		this.aluno = aluno;
 	}
 	

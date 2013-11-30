@@ -37,6 +37,7 @@ public class RecuperandoDados {
 		return diciplinas;
 	}
 	
+	//recuperando informações do aluno
 	public Aluno recuperandoDadosAluno(String email) throws IOException	{
 		//lendo arquivo
 		BufferedReader arq = new BufferedReader(new FileReader("bd\\academicos\\" + email + ".txt"));
@@ -48,6 +49,7 @@ public class RecuperandoDados {
 		String cpf = arq.readLine();
 		String nomeMae = arq.readLine();
 		String endereco = arq.readLine();
+		String telefone = arq.readLine();
 		String anoEntrada = arq.readLine();
 		arq.readLine();
 		String tipoPagamento = arq.readLine();
@@ -64,24 +66,22 @@ public class RecuperandoDados {
 		a.setDataDeNascimento(dataNasc);
 		a.setNomeDaMae(nomeMae);
 		a.setEndereco(endereco);
+		a.setTelefone(telefone);
 		a.setAnoEntrada(anoEntrada);
 		a.setTipoPagamento(tipoPagamento);
 		a.setCursoDesejado(curso);
 		a.setSituacaoAtual(situacaoAtual);
 		
-		return a;
+		return a;//retornando objeto
 	}
 	
 	
 	//testando a classe
 	public static void main(String args[]) throws IOException	{
 		RecuperandoDados r = new RecuperandoDados();
-		Diciplina[] d = r.procurarDiciplinas("Computação");
 		
-		for (int x = 0; x < d.length; x++) {
-			System.out.println(d[x].getCargaHoraria());
-		}
-		
+		Aluno a = new Aluno(r.recuperandoDadosAluno("fulanodetal@hotmail.com").getNome(),r.recuperandoDadosAluno("fulanodetal@hotmail.com").getCpf());
+		System.out.println(a.getNome() + "\n" + a.getCpf() + "\n" + a.getCursoDesejado());
 	}
 	
 }

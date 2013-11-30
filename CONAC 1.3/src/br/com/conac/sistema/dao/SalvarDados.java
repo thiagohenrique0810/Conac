@@ -94,7 +94,7 @@ public class SalvarDados {
 		
 	}
 	
-	//metodo para salvar informações do secretario
+	//metodo para salvar informações do disciplina
 		public void salvarDiciplina(Diciplina diciplina) {
 			
 			FileWriter file;

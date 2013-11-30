@@ -20,19 +20,23 @@ public class PainelDoAluno extends JFrame {
 	private Container container;
 	private Aluno aluno;
 	
-	private JPainelNotas notas = new JPainelNotas();
-	private JPainelDados dados = new JPainelDados();
-	private JPainelInfoCurso infoCurso = new JPainelInfoCurso();
+	private JPainelNotas notas;
+	private JPainelDados dados;
+	private JPainelInfoCurso infoCurso;
+	private JTabbedPane abas;
 	
 	public PainelDoAluno()	{
 		super("Painel do aluno");
 		
 		container = getContentPane();
 		
-		dados.setDados(getAluno());
+		notas = new JPainelNotas();
 		
-		//cria um painel de abas
-		JTabbedPane abas = new JTabbedPane();
+		infoCurso = new JPainelInfoCurso();
+		
+		dados = new JPainelDados();
+		
+		abas = new JTabbedPane();
 		abas.add("Notas",notas);
 		abas.add("Informações Cadastrais",dados);
 		abas.add("Informações sobre o Curso",infoCurso);
@@ -63,23 +67,18 @@ public class PainelDoAluno extends JFrame {
 		}
 		
 	}
-	
-	public static void main(String args[])	{
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (ClassNotFoundException | InstantiationException
-				| IllegalAccessException | UnsupportedLookAndFeelException e) {
-			// TODO Auto-generated catch block
-			//LOG.error(e.getMessage());
-		}
-		new PainelDoAluno().setVisible(true);
-	}
 
 	public Aluno getAluno() {
 		return aluno;
 	}
 
 	public void setAluno(Aluno aluno) {
+		this.aluno = new Aluno(aluno.getNome(),aluno.getCpf());
 		this.aluno = aluno;
+		
+		//mostrando informações
+		dados.setAluno(getAluno());
+		dados.preencherDados();
+		dados.setVisible(true);
 	}
 }

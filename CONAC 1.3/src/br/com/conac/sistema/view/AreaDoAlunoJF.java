@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
 import br.com.conac.sistema.dao.RecuperandoDados;
+import br.com.conac.sistema.model.Aluno;
 
 public class AreaDoAlunoJF extends JFrame {
 	
@@ -26,6 +27,8 @@ public class AreaDoAlunoJF extends JFrame {
 	private Container container;
 	private TratadorEventos evento;
 	private String email;
+	
+	private Aluno a;
 	
 	public AreaDoAlunoJF()	{
 		
@@ -112,18 +115,23 @@ public class AreaDoAlunoJF extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			PainelDoAluno p = new PainelDoAluno();
 			RecuperandoDados r = new RecuperandoDados();
+			PainelDoAluno panel = new PainelDoAluno();
+			
 			try {
-				p.setAluno(r.recuperandoDadosAluno(email));
+				a = new Aluno(r.recuperandoDadosAluno(getEmail()).getNome(),r.recuperandoDadosAluno(getEmail()).getCpf());
+				a = r.recuperandoDadosAluno(getEmail());
+				panel.setAluno(a);
+				
+				
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				//e1.printStackTrace();
 			}
 			
 			if(e.getSource() == btnEntrar)	{
 				//instruções para situação e notas
-				p.setVisible(true);
+				panel.setVisible(true);
 			}
 			
 			if(e.getSource() == btnEntrar_1)	{
@@ -148,6 +156,7 @@ public class AreaDoAlunoJF extends JFrame {
 	//metodo main para testar a janela, deve-se ser removido na versão final
 	public static void main(String args[])	{
 		AreaDoAlunoJF a = new AreaDoAlunoJF();
+		a.setEmail("fulanodetal@hotmail.com");
 		a.setVisible(true);
 	}
 }
