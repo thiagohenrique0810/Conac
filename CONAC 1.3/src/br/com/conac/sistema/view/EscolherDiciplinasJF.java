@@ -182,7 +182,6 @@ public class EscolherDiciplinasJF extends JFrame {
 				EscolherDiciplinasJF.this.dispose();		
 			}
 		}
-
 	}
 
 	public void recuperandoAluno(Aluno aluno) {
