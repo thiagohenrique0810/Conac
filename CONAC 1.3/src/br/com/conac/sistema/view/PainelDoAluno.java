@@ -57,15 +57,11 @@ public class PainelDoAluno extends JFrame {
 		setSize(800,500);
 	}
 	
-	
 	public class TratadorEventos implements ActionListener	{
-
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
-			
-		}
-		
+		}	
 	}
 
 	public Aluno getAluno() {
