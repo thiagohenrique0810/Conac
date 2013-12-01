@@ -9,13 +9,15 @@ import br.com.conac.sistema.view.LoginJF;
  */
 public class Start {
 	public static void main(String args[])	{
-		/*
-		 * @descrição para verificar se ha algum secretario cadastrado
-		 */
+	/*
+	 * @descrição para verificar se ha algum secretario cadastrado
+	 */
+
 		//codigo aqui!!!
-		/*
-	 @descrição abre janela de acesso 
-		 */
+
+	 /*
+	 * @descrição abre janela de acesso 
+	 */
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} 

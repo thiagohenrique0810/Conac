@@ -173,6 +173,7 @@ public class EscolherDiciplinasJF extends JFrame {
 			if(e.getSource() == btnSalvar)	{
 				try {
 					salvar.salvarInformacoesAluno(getAluno(),diciplinasSelecionadas());
+					salvar.notasAluno(getAluno().getCursoDesejado(),diciplinasSelecionadas(),getAluno().getEmail());
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

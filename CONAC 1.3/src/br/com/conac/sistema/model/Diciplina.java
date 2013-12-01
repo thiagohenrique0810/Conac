@@ -7,9 +7,7 @@ public class Diciplina {
 	private String nomeDiciplina;
 	private String cargaHoraria;
 	private String descricaoDaEmenta;
-	private String curso;
-
-	public DiciplinaNota notas = new DiciplinaNota(this.getCodigo());	
+	private String curso;	
 
 	/**
 	 * @description descrições da classe

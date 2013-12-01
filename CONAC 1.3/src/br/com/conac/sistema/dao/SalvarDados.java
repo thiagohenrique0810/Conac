@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 
 import br.com.conac.sistema.model.Aluno;
 import br.com.conac.sistema.model.Diciplina;
+import br.com.conac.sistema.model.DiciplinaNota;
 import br.com.conac.sistema.model.Professor;
 import br.com.conac.sistema.model.Secretario;
 
@@ -118,6 +119,31 @@ public class SalvarDados {
 			e.printStackTrace();
 		}
 
+	}
+	
+	//salvando notas do aluno
+	public void notasAluno(String curso,ArrayList<String> diciplinasSelecionadas,
+			String email) {
+		FileWriter file;
+		DiciplinaNota notas = new DiciplinaNota();
+		
+		for (int x = 0; x < diciplinasSelecionadas.size(); x++) {
+			try {
+				file = new FileWriter(new File("bd\\diciplinas\\notas\\" + curso + "\\" + diciplinasSelecionadas.get(x) + email + ".txt"),true);
+				PrintWriter arq = new PrintWriter(file);
+				
+				arq.println(diciplinasSelecionadas.get(x));
+				arq.println(notas.getNota01());
+				arq.println(notas.getNota01());
+				arq.println(notas.getNota01());
+				
+				arq.close();//fechando arquivo
+
+			} catch (IOException e) {
+				//ERRO
+				e.printStackTrace();
+			}
+		}		
 	}
 
 

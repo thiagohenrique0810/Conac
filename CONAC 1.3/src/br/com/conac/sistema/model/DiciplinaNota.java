@@ -8,21 +8,6 @@ public class DiciplinaNota {
 	private double media;
 	private String situacao;
 	private String tipoMedia;
-	private String codigo;
-
-	//construtor
-	public DiciplinaNota(String codigo)	{
-		setCodigo(codigo);
-	}
-
-	//codigo
-	public String getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
 
 	//recebendo notas
 	public double getNota01() {
