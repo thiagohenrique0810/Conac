@@ -8,8 +8,19 @@ public final class Aluno extends Pessoa	{
 	private String nomeDaMae;
 	private String anoEntrada;
 	private String anoSaida;
-
+	private String diciplinas[];
+	
+	
 	//metodos
+	public String[] getDiciplinas() {
+		return diciplinas;
+	}
+
+	public void setDiciplinas(String[] diciplinas) {
+		this.diciplinas = new String[diciplinas.length];
+		this.diciplinas = diciplinas;
+	}
+
 	public String getTipoPagamento() {
 		return tipoPagamento;
 	}

@@ -138,7 +138,7 @@ public class JPainelNovaDiciplina extends JPanel	{
 					
 			if(e.getSource() == btnSalvar)	{
 				//instruções para salvar as informações das diciplinas
-				new SalvarDados().salvarDiciplina(getInfomacoes());			
+				new SalvarDados().salvarDiciplina(getInfomacoes());
 			}
 
 			//botao limpar campos
@@ -150,6 +150,7 @@ public class JPainelNovaDiciplina extends JPanel	{
 			//botão cancelar
 			if(e.getSource() == btnCancelar)	{
 				//instruções para fechar a janela
+				
 			}
 
 		}		

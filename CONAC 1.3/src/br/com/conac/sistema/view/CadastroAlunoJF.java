@@ -31,7 +31,6 @@ import br.com.conac.sistema.model.Aluno;
 
 import java.awt.SystemColor;
 
-
 public class CadastroAlunoJF extends JFrame {
 	//componentes
 	private JLabel lblFormulario;
@@ -63,9 +62,9 @@ public class CadastroAlunoJF extends JFrame {
 	private JTextField tfFCpf;
 	private JTextField tfDataNasc;
 	private JPasswordField jpassword;
-	
+
 	private MaskFormatter maskcpf,maskemail,maskdata,masktelefone,maskano;
-	
+
 	private Container container;
 
 	private Aluno novoAluno;
@@ -86,7 +85,7 @@ public class CadastroAlunoJF extends JFrame {
 
 		container.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		container.setLayout(null);
-		
+
 		masktelefone = new MaskFormatter("(##)####-####");
 		maskano = new MaskFormatter("####");
 		maskcpf = new MaskFormatter("###.###.###-##");
@@ -154,34 +153,34 @@ public class CadastroAlunoJF extends JFrame {
 		container.add(tfNomeMae);
 		tfNomeMae.setColumns(10);
 		tfNomeMae.addActionListener(evento);
-		
+
 		tfAnoEntrada = new JFormattedTextField(maskano);
 		tfAnoEntrada.setBounds(128, 390, 60, 20);
 		container.add(tfAnoEntrada);
 		tfAnoEntrada.setColumns(10);
 		tfAnoEntrada.addActionListener(evento);
-		
+
 		tfAnoSaida = new JFormattedTextField(maskano);
 		tfAnoSaida.setBounds(373, 264, 86, 20);
 		container.add(tfAnoSaida);
 		tfAnoSaida.setColumns(10);
 		tfAnoSaida.addActionListener(evento);
 
-		btnEnviar = new JButton("Enviar");
+		btnEnviar = new JButton("Proximo");
 		btnEnviar.setIcon(new ImageIcon(CadastroAlunoJF.class.getResource("/imgs/iconok.fw.png"))); 
-		btnEnviar.setBounds(55, 572, 106, 34);
+		btnEnviar.setBounds(49, 572, 122, 34);
 		container.add(btnEnviar);
 		btnEnviar.addActionListener(evento);
 
 		btnLimparCampos = new JButton("Limpar campos");
 		btnLimparCampos.setIcon(new ImageIcon(CadastroAlunoJF.class.getResource("/imgs/iconrefresh.fw.png")));
-		btnLimparCampos.setBounds(163, 572, 162, 34);
+		btnLimparCampos.setBounds(173, 572, 162, 34);
 		container.add(btnLimparCampos);
 		btnLimparCampos.addActionListener(evento);
 
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setIcon(new ImageIcon(CadastroAlunoJF.class.getResource("/imgs/iconcancel.fw.png")));
-		btnCancelar.setBounds(327, 572, 122, 34);
+		btnCancelar.setBounds(337, 572, 122, 34);
 		container.add(btnCancelar);
 		btnCancelar.addActionListener(evento);
 
@@ -204,7 +203,7 @@ public class CadastroAlunoJF extends JFrame {
 		container.add(tfEmail);
 		tfEmail.setColumns(10);
 		tfEmail.addActionListener(evento);
-		
+
 		tfFCpf = new JFormattedTextField(maskcpf);
 		tfFCpf.setBounds(128, 264, 96, 20);
 		container.add(tfFCpf);
@@ -224,7 +223,7 @@ public class CadastroAlunoJF extends JFrame {
 		choice_1.addItem("Computação");
 		choice_1.addItem("Direito");
 		container.add(choice_1);
-		
+
 		tfDataNasc = new JFormattedTextField(maskdata);
 		tfDataNasc.setBounds(373, 201, 96, 20);
 		container.add(tfDataNasc);
@@ -240,54 +239,44 @@ public class CadastroAlunoJF extends JFrame {
 		JSeparator separator = new JSeparator();
 		separator.setBounds(495, 374, -57, 2);
 		getContentPane().add(separator);
-		
+
 		JLabel lblF = new JLabel("Fone:");
 		lblF.setBounds(259, 519, 46, 14);
 		getContentPane().add(lblF);
-		
+
 		txtFone = new JFormattedTextField(masktelefone);
 		txtFone.setBounds(362, 516, 117, 20);
 		getContentPane().add(txtFone);
 		txtFone.setColumns(10);
-		
+
 		label = new JLabel("CONAC\r\n");
 		label.setForeground(SystemColor.textHighlight);
 		label.setFont(new Font("Apple Butter", Font.BOLD | Font.ITALIC, 15));
-		label.setBounds(455, 594, 63, 23);
+		label.setBounds(465, 594, 53, 23);
 		getContentPane().add(label);
-		
+
 	}
 	public class TratadorEventos implements ActionListener	{
 		public void actionPerformed(ActionEvent e) {
 			//manipulando os botões
 			LoginDB l = new LoginDB();
-			SalvarDados salvar = new SalvarDados();
 
 			if(e.getSource() == btnEnviar)	{
 				//instruções para salvar dados
-				
+
 				//escolhendo as diciplinas
 				CJanelaDiciplina dc = new CJanelaDiciplina(choice_1.getSelectedItem());
 				try {
-					dc.mostrarJanelaEscolha();
-				} catch (IOException e2) {
-					// TODO Auto-generated catch block
-					//e2.printStackTrace();
-				}
-				
-				try {
 					if((l.verificar(tfEmail.getText())) == false)	{						
-						
-						salvar.salvarInformacoesAluno(getInformacoes());
-						JOptionPane.showMessageDialog(null, "Arquivo salvo com sucesso!");
+						dc.mostrarJanelaEscolha(getInformacoes());//mostrar janela para selecionar as diciplinas
 					}
 					else	{
 						JOptionPane.showMessageDialog(null, "Usuario Ja cadastrado! :/");		
 					}
 				} catch (HeadlessException | IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				CadastroAlunoJF.this.dispose();
 			}
 			if(e.getSource() == btnLimparCampos)	{
 				//instruções para limpar os campos de texto
@@ -295,10 +284,11 @@ public class CadastroAlunoJF extends JFrame {
 			}
 			if(e.getSource() == btnCancelar)	{
 				//instruções para fechar e cancelar a operação
+				CadastroAlunoJF.this.dispose();
 			}
 		}
 	}
-	
+
 	/**
 	 * Limpa os JTextFields da janela.
 	 * 
@@ -329,10 +319,9 @@ public class CadastroAlunoJF extends JFrame {
 				fields.add(((JTextField) C));
 			}
 		}
-
 		return fields.toArray(new JTextField[fields.size()]);
 	}
-	
+
 	//recuperando as informações dos campos
 	public Aluno getInformacoes()	{
 		novoAluno = new Aluno(tfNome.getText(),tfFCpf.getText());
