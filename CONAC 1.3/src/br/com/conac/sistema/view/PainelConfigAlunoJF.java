@@ -23,6 +23,7 @@ public class PainelConfigAlunoJF  extends JFrame	{
 	private String email;
 	private Diciplina[] diciplinas;
 	private PainelConfigNotas pcn;
+	private PainelConfigDados dados;
 	
 	public PainelConfigAlunoJF() throws Exception	{
 		super("Gerenciamento do aluno");
@@ -31,7 +32,10 @@ public class PainelConfigAlunoJF  extends JFrame	{
 		
 		pcn = new PainelConfigNotas();
 		
+		dados = new PainelConfigDados();
+		
 		abas = new JTabbedPane();
+		abas.add("Atualizar dados cadastrais",dados);
 		abas.add("Atualização de notas",pcn);
 		container.add(abas);
 		
@@ -94,6 +98,9 @@ public class PainelConfigAlunoJF  extends JFrame	{
 		pcn.setEmail(getAluno().getEmail());
 		pcn.setDiciplinas(getDiciplinas());
 		pcn.carregarDiciplinas();
+		
+		dados.setAluno(getAluno());
+		dados.carregarInformacoes();
 	}
 
 }
