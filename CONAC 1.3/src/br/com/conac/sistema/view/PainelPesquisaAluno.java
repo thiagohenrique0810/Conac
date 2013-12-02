@@ -121,13 +121,12 @@ public class PainelPesquisaAluno extends JPanel	{
 			}
 			
 			if(e.getSource() == btnAbrir)	{
-				
 				//instruções para abrir a janela de alterações
-				
+				int linhaSelecionada = table.getSelectedRow();
+				PainelConfigAlunoJF pc = new PainelConfigAlunoJF();
+				pc.setEmail((String) model.getValueAt(linhaSelecionada, 0));
 			}
-			
 		}
-		
 	}
 	
 	//recuperando todos os alunos
