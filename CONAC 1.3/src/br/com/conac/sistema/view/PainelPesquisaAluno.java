@@ -125,6 +125,7 @@ public class PainelPesquisaAluno extends JPanel	{
 				int linhaSelecionada = table.getSelectedRow();
 				PainelConfigAlunoJF pc = new PainelConfigAlunoJF();
 				pc.setEmail((String) model.getValueAt(linhaSelecionada, 0));
+				pc.setVisible(true);
 			}
 		}
 	}
