@@ -1,7 +1,9 @@
 package br.com.conac.sistema.view;
 
 import javax.swing.JFrame;
+
 import java.awt.GridBagLayout;
+
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -23,6 +25,7 @@ import javax.swing.ButtonGroup;
 import br.com.conac.sistema.controler.EventosADS;
 
 
+
 import java.awt.Toolkit;
 import java.text.ParseException;
 
@@ -39,6 +42,7 @@ public class AreaDoSecretarioJF extends JFrame	{
 	private JRadioButton rdbtnProfessor;
 	private JRadioButton rdbtnAluno;
 	private JRadioButton rdbtnGerente;
+	private String email;
 
 	public AreaDoSecretarioJF() throws ParseException {
 		super("Painel do secretario");
@@ -143,5 +147,13 @@ public class AreaDoSecretarioJF extends JFrame	{
 		 * @descrição: faz tratamento de eventos do clique
 		 */
 		evento01.eventos(btnNewButton,btnCadastrese,rdbtnAluno,rdbtnProfessor,rdbtnGerente);
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

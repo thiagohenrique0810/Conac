@@ -2,6 +2,7 @@ package br.com.conac.sistema.controler;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.ParseException;
 
 import javax.swing.JButton;
@@ -18,7 +19,16 @@ public class EventosADS implements ActionListener {
 	private JButton btnNewButton;
 	private String tipoCadastro;
 	private NovoCadastro cadastro;
+	private String email;
 	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	//recebendo eventos
 	public void eventos(JButton btnNewButton, JButton btnCadastrese,
 			JRadioButton rdbtnAluno, JRadioButton rdbtnProfessor,
@@ -40,7 +50,16 @@ public class EventosADS implements ActionListener {
 		
 		if(e.getSource() == btnNewButton)	{
 			//instruções para gerenciamento dos academicos
-			new PainelGerenciamentoSecretario().setVisible(true);
+			PainelGerenciamentoSecretario secretario;
+			try {
+				secretario = new PainelGerenciamentoSecretario();
+				secretario.setEmail(getEmail());
+				secretario.setVisible(true);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 		}
 		if(rdbtnAluno.isSelected() == true)	{
 			//instrução para dizer o tipo de cadastro se for aluno

@@ -1,5 +1,6 @@
 package br.com.conac.sistema.dao;
 
+import java.awt.geom.Area;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -102,6 +103,7 @@ public class LoginDB {
 			if(tipoUsuario.equals("Secretario"))	{
 				//instruções para abrir a janela do usuario secretario
 				AreaDoSecretarioJF secretario = new AreaDoSecretarioJF();
+				secretario.setEmail(email);
 				secretario.setVisible(true);
 			}
 			else if(tipoUsuario.equals("Professor"))	{
