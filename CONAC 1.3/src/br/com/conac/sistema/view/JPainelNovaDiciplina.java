@@ -128,8 +128,7 @@ public class JPainelNovaDiciplina extends JPanel	{
 			tfCodigo.setText(cod);
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		
+		}	
 	}
 
 	public class TratadorEventos implements ActionListener	{

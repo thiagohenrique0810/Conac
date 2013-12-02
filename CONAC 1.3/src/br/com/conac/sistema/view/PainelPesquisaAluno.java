@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -89,13 +90,6 @@ public class PainelPesquisaAluno extends JPanel	{
 
 		setSize(761, 390);
 	}
-	
-	//carregar informações
-	/*public void carregarInformacoes()	{
-		for (int x = 0; x < .length; x++) {
-			model.addRow(new String[] {codigos[x],diciplinas[x],cargaHorarias[x]});
-		}
-	}*/
 
 	public JPanel getPanel() {
 		return panel;
@@ -115,7 +109,6 @@ public class PainelPesquisaAluno extends JPanel	{
 		public void actionPerformed(ActionEvent e) {
 			
 			if(e.getSource() == btnPesquisarAluno)	{
-				
 				//instruções para pesquisar aluno
 				
 			}
@@ -123,9 +116,20 @@ public class PainelPesquisaAluno extends JPanel	{
 			if(e.getSource() == btnAbrir)	{
 				//instruções para abrir a janela de alterações
 				int linhaSelecionada = table.getSelectedRow();
-				PainelConfigAlunoJF pc = new PainelConfigAlunoJF();
-				pc.setEmail((String) model.getValueAt(linhaSelecionada, 0));
-				pc.setVisible(true);
+				PainelConfigAlunoJF pc;
+				try {
+					pc = new PainelConfigAlunoJF();
+					pc.setEmail((String) model.getValueAt(linhaSelecionada, 0));
+					pc.carregarInformacoes();
+					pc.setVisible(true);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		}
 	}

@@ -3,6 +3,9 @@ package br.com.conac.sistema.view;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -12,7 +15,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
+
+import br.com.conac.sistema.dao.RecuperandoDados;
+import br.com.conac.sistema.model.Diciplina;
+import br.com.conac.sistema.model.DiciplinaNota;
 
 public class PainelConfigNotas extends JPanel {
 	private JPanel panel;
@@ -25,6 +33,16 @@ public class PainelConfigNotas extends JPanel {
 	private JTable table;
 	private Object[][] dados;
 	private String[] colunas;
+	private String email;
+	private Diciplina diciplinas[];
+	private DefaultTableModel model;
+	
+	private String codigos[];
+	private String nomeDiciplinas[];
+	private String cargaHoraria[];
+	private JButton btnAlterarNotas;
+	private JButton btnSalvarAlteraes;
+
 	/**
 	 * Create the panel.
 	 */
@@ -49,46 +67,10 @@ public class PainelConfigNotas extends JPanel {
 			"Situação"
 		};
 		dados = new String[][] {
-				{
-					"00001","Programação orientada a objetos","APROVADO"
-				},
-				{
-					"00002","Filosofia e etica","APROVADO"
-				},
-				{
-					"00003","Matematica I","RECUPERAÇÃO"
-				},
-				{
-					"00004","Laboratorio de programação","REPROVADO"
-				},
-				{
-					"00005","Programação orientada a objetos","APROVADO"
-				},
-				{
-					"00006","Filosofia e etica","APROVADO"
-				},
-				{
-					"00007","Matematica II","RECUPERAÇÃO"
-				},
-				{
-					"00008","Comportamento organizacional","REPROVADO"
-				},
-				{
-					"00009","Estatistica","APROVADO"
-				},
-				{
-					"00010","Ciências sociais e politicas","APROVADO"
-				},
-				{
-					"00011","Matematica II","RECUPERAÇÃO"
-				},
-				{
-					"00012","Laboratorio de programação","REPROVADO"
-				}
 		};
 		
-		
-		table = new JTable(dados,colunas)	{
+		model = new DefaultTableModel(dados,colunas);
+		table = new JTable(model)	{
 			//desabilitando a edição
 			public boolean isCellEditable(int dados,int colunas)	{
 				return false;
@@ -184,18 +166,89 @@ public class PainelConfigNotas extends JPanel {
 		lblSelecioneUmaDiciplina.setBounds(26, 60, 199, 14);
 		panel.add(lblSelecioneUmaDiciplina);
 		
-		JButton btnAlterarNotas = new JButton("Alterar notas");
+		btnAlterarNotas = new JButton("Alterar notas");
 		btnAlterarNotas.setIcon(new ImageIcon(PainelConfigNotas.class.getResource("/imgs/iconedit.fw.png")));
 		btnAlterarNotas.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnAlterarNotas.setBounds(288, 335, 199, 45);
 		panel.add(btnAlterarNotas);
 		
-		JButton btnSalvarAlteraes = new JButton("Salvar altera\u00E7\u00F5es");
+		btnSalvarAlteraes = new JButton("Salvar altera\u00E7\u00F5es");
 		btnSalvarAlteraes.setIcon(new ImageIcon(PainelConfigNotas.class.getResource("/imgs/iconok.fw.png")));
 		btnSalvarAlteraes.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnSalvarAlteraes.setBounds(510, 335, 199, 45);
 		panel.add(btnSalvarAlteraes);
 		
 		setSize(761, 405);
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	//carregando diciplinas do aluno
+	public void carregarDiciplinas() {
+		//instruções para carregar as diciplinas
+		for (int x = 0; x < getDiciplinas().length; x++) {
+			model.addRow(new String[] {codigos[x],nomeDiciplinas[x],cargaHoraria[x]});
+		}
+	}
+
+	public Diciplina[] getDiciplinas() {
+		return diciplinas;
+	}
+
+	public void setDiciplinas(Diciplina[] diciplinas) {
+		this.diciplinas = new Diciplina[diciplinas.length];
+		this.diciplinas = diciplinas;
+		
+		codigos = new String[diciplinas.length];
+		nomeDiciplinas = new String[diciplinas.length];
+		cargaHoraria = new String[diciplinas.length];
+		
+		for (int x = 0; x < diciplinas.length; x++) {
+			codigos[x] = diciplinas[x].getCodigo();
+			nomeDiciplinas[x] = diciplinas[x].getNomeDiciplina();
+			cargaHoraria[x] = diciplinas[x].getCargaHoraria();
+		}
+	}
+	
+	//tratamento de seleção
+	public class TratadorEventos implements ActionListener	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			if(e.getSource() == btnAlterarNotas)	{
+				//instruções para fazer alterações
+				
+			}
+			
+			if(e.getSource() == btnSalvarAlteraes)	{
+				//instruções para salvar as alterações
+			}
+			
+			if(e.getSource() == btnVerNotas)	{
+				//instruções para abrir a janela de alterações
+				int linhaSelecionada = table.getSelectedRow();
+				String codigo = (String) model.getValueAt(linhaSelecionada, 0);
+				RecuperandoDados r = new RecuperandoDados();
+				DiciplinaNota nota = null;
+				
+			
+					try {
+						nota = r.recuperandoNotas(codigo, getEmail());
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+			
+				tfnota01.setText(nota.getNota01());
+				tfnota02.setText(nota.getNota02());
+			}
+		}
 	}
 }

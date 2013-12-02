@@ -3,6 +3,7 @@ package br.com.conac.sistema.view;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -11,20 +12,27 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JTabbedPane;
 
+import br.com.conac.sistema.dao.RecuperandoDados;
 import br.com.conac.sistema.model.Aluno;
+import br.com.conac.sistema.model.Diciplina;
 
 public class PainelConfigAlunoJF  extends JFrame	{
 	private Container container;
 	private Aluno aluno;
 	private JTabbedPane abas;
 	private String email;
+	private Diciplina[] diciplinas;
+	private PainelConfigNotas pcn;
 	
-	public PainelConfigAlunoJF()	{
+	public PainelConfigAlunoJF() throws Exception	{
 		super("Gerenciamento do aluno");
 		
 		container = getContentPane();
 		
+		pcn = new PainelConfigNotas();
+		
 		abas = new JTabbedPane();
+		abas.add("Atualização de notas",pcn);
 		container.add(abas);
 		
 		setLocation(500, 200);
@@ -66,6 +74,26 @@ public class PainelConfigAlunoJF  extends JFrame	{
 
 	public String getEmail() {
 		return email;
+	}
+	
+	public Diciplina[] getDiciplinas() {
+		return diciplinas;
+	}
+
+	public void setDiciplinas(Diciplina[] diciplinas2) {
+		this.diciplinas = new Diciplina[diciplinas2.length];
+		this.diciplinas = diciplinas2;
+	}
+
+	public void carregarInformacoes() throws IOException {
+		// TODO Auto-generated method stub
+		RecuperandoDados r = new RecuperandoDados();
+		this.setAluno(r.recuperandoDadosAluno(getEmail()));
+		this.setDiciplinas(r.procurarDiciplinas(getAluno().getCursoDesejado()));
+		
+		pcn.setEmail(getAluno().getEmail());
+		pcn.setDiciplinas(getDiciplinas());
+		pcn.carregarDiciplinas();
 	}
 
 }

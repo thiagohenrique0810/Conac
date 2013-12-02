@@ -2,27 +2,27 @@ package br.com.conac.sistema.model;
 
 public class DiciplinaNota {
 
-	private double nota01;
-	private double nota02;
+	private String nota01;
+	private String nota02;
 	private double nota03;
 	private double media;
 	private String situacao;
 	private String tipoMedia;
 
 	//recebendo notas
-	public double getNota01() {
+	public String getNota01() {
 		return nota01;
 	}
 
-	public void setNota01(double nota01) {
+	public void setNota01(String nota01) {
 		this.nota01 = nota01;
 	}
 
-	public double getNota02() {
+	public String getNota02() {
 		return nota02;
 	}
 
-	public void setNota02(double nota02) {
+	public void setNota02(String nota02) {
 		this.nota02 = nota02;
 	}
 
@@ -37,15 +37,15 @@ public class DiciplinaNota {
 
 	//medias
 	private double getMediaAritmetica()	{
-		return ((getNota01() + getNota02()) / 2);
+		return ((Integer.parseInt(getNota01()) + Integer.parseInt(getNota02())) / 2);
 	}
 
 	private double getMediaFinal()	{
 		return getNota03();
 	}
 
-	public void setMedia(double media) {
-		this.media = media;
+	public void setMedia(double string) {
+		this.media = string;
 	}
 
 	private double calculo()	{
