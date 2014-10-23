@@ -13,7 +13,6 @@ public class Start {
 	 * @descrição para verificar se ha algum secretario cadastrado
 	 */
 		
-		//asasdfasdf
 
 		//codigo aqui!!!
 
